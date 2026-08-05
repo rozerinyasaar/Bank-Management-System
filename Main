@@ -1,0 +1,76 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package pkg230315082.oop.homework;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+
+
+/**
+ *
+ * @author 7Z4M9EA
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        User user = new User(
+                "rozerinyasar",
+                "Rozerin",
+                "Yaşar",
+                "1512",
+                "rozerinyasar068@gmail.com",
+                "HomeAdress",
+                "WorkAdress",
+                LocalDate.of(2002, Month.DECEMBER,15));
+       
+        Product product = new Product(
+                "Laptop",
+                "Black",
+                "Electronic",
+                "16 GB RAM",
+                10,2.5);
+        
+        CreditCard card = new CreditCard(
+                123456789,
+                "rozerinyasar",
+                123,LocalDate.of(2028, Month.MARCH, 12));
+    
+        user.addFavoriteProduct(product);
+        
+        System.out.println("------------------");
+        
+        user.orderProduct(product, 5, card);
+        
+         System.out.println("-----------------");
+         System.out.println("User Information:");
+         System.out.println("Username:"+user.getUserName());
+         System.out.println("Name and Surname:" + user.getFirstName()+" "+user.getLastName());
+         System.out.println("E-mail address:"+user.getEmail());
+         
+         System.out.println("------------------");
+         
+         System.out.println("Ordering Information");
+         for(Order order : user.getOrders()){
+             System.out.println(order.getQuantity()+"x"+order.getProduct().getProductName());
+         }
+         System.out.println("------------------");
+         
+         System.out.println("Favorite Products");
+         for(Product favorite:user.getFavoriteProduct()){
+             System.out.println(favorite.getProductName());
+         }
+         
+         System.out.println("------------------");
+         
+         System.out.println("Stock:"+product.getStock());
+    }    
+            
+    
+}
