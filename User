@@ -1,0 +1,154 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pkg230315082.oop.homework;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author 7Z4M9EA
+ */
+public class User {
+
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String email;
+    private String homeAddress;
+    private String workAddress;
+
+    private LocalDate birthDate;
+
+    private List<Order> orders;
+    private List<Product> favoriteProducts;
+    private List<CreditCard> creditCards = new ArrayList<>();
+
+    public User(String username, String firstName, String lastName, String password, String email, String homeAddress, String workAddress, LocalDate birthDate) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.homeAddress = homeAddress;
+        this.workAddress = workAddress;
+        this.orders = new ArrayList<>();
+        this.favoriteProducts = new ArrayList<>();
+        this.creditCards = new ArrayList<>();
+    }
+    
+     //Ordering
+    public void orderProduct(Product product,int quantity , CreditCard card){
+        if(product.reduceStock(quantity)){
+            Order order = new Order(this,product,card,quantity);
+            orders.add(order);
+            System.out.println("Ordering is successfull:"+quantity+"x"+product.getProductName());
+        }
+        else{
+            System.out.println("Stock is not enough:"+product.getProductName());
+        }
+    }
+
+    //Adding favorite product
+    public void addFavoriteProduct(Product product) {
+        favoriteProducts.add(product);
+        System.out.println("Product is added favorites:"+product.getProductName());
+    }
+
+    
+    //Getter and setter methods
+    public String getUserName() {
+        return username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    public String getWorkAddress() {
+        return workAddress;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public List<Product> getFavoriteProduct() {
+        return favoriteProducts;
+    }
+
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setuUerName(String username) {
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public void setWorkAddress(String workAddress) {
+        this.workAddress = workAddress;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = new ArrayList<>();
+
+    }
+
+    public void setFavoriteProduct(List<Product> favoriteProducts) {
+        this.favoriteProducts = new ArrayList<>();
+
+    }
+
+    public void setCreditCards(List<CreditCard> creditCards) {
+        this.creditCards = new ArrayList<>();
+    }
+}
